@@ -12,3 +12,7 @@
 # end
 
 User.create!(email: 'raq@example.com', password: 'pass123', password_confirmation: 'pass123', admin: true)
+
+# 25.times do |i|
+# 	post = Post.new
+# end
