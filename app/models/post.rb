@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
+
+  has_many :comments. as: :commentable, dependent: :destroy
   # Active Storage Rails 5
   has_one_attached :thumbnail
   has_one_attached :banner
@@ -8,6 +10,10 @@ class Post < ApplicationRecord
 
   validates :title, length: {minimum: 5}
   validates :body, length: {minimum: 25}
+
+  self.per_page =10
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   # resize images with image variance
   def optimized_image(image, x, y)
