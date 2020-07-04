@@ -41,6 +41,20 @@
 		</div>
 	</div>
 </div>	
+
+<div class="row">
+	<div class="col-3"></div>
+	<div class="col-9">
+		<div class="inner-comment-container"id = "reply-<%= comment.id %>">
+			<% comment.comments.each do |comment| %>
+				<%= render comment %>
+			<% end %>
+			
+		</div>
+	</div>
+</div>
+
+
 <!-- Modal -->
 <div class= "modal fade" id= "edit_history" tabindex = '-1' role="dialog" aria-labelledby="Comment Edit History" aria-hidden="true">
 	<div class="modal-dialog" role = 'document'>
