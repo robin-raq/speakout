@@ -15,6 +15,31 @@
 			</div>
 		</div>
 	</div>
+	<div class="col-9">
+		<div class="row">
+			<div class = "col-8">
+				<div class="comment-username">
+					<%= comment.user.username %>
+				</div>
+				<div class="comment-number">	
+					#<%= comment.comment_number %>
+				</div>
+			</div>
+
+			<% if current_user && (current_user === comment.user || current_user.admin) %>
+				<div class="col-4 text-right" style=" padding-right:0">
+					<div class="button-group" role ="group" aria-label = "Edit and Delete Button Group">
+						<%= link_to "Edit", edit_comment_path(comment), class: 'btn btn-warning', remote: true %>
+						<%= link_to "Delete", comment, class:'btn btn-danger', method: :delete, remote: true %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<hr class= "md-4">
+		<div class="comment-body" id ="comment-body-<%= comment.id %>">
+			<%= comment.body %>
+		</div>
+	</div>
 </div>	
 <!-- Modal -->
 <div class= "modal fade" id= "edit_history" tabindex = '-1' role="dialog" aria-labelledby="Comment Edit History" aria-hidden="true">
